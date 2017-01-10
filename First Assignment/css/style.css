@@ -1,0 +1,218 @@
+/*reseting body margins*/
+body
+{
+	margin: 0 0 0 0 ;
+}
+
+/*Wrapping body contents*/
+.wrap{
+	background-color: grey;
+
+}
+
+/*Header*/
+.header{
+	font-family: Lemonada;
+	font-size: 60px;
+	text-align: center;
+	top:0px;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	text-decoration-color: white;
+	margin: auto;
+   	background: grey;
+   	text-shadow: 2px 2px 3px;
+}
+
+/*Navigation Panel*/
+.nav{
+	top:40px;
+	padding: 10px 0 10px 0;
+	font-family: Lemonada;
+	position: fixed;
+	font-size: 20px;
+	text-align: center;
+	z-index: 1;
+	width: 100%;
+	margin-top: 50px;
+	padding-top: 20px;
+	display: block;
+	text-transform: lowercase;
+	background-color: #D3D3D3;
+	text-shadow: 1px 1px 2px;
+}
+
+/*Navigation Panel lists*/
+div ul li{
+	display: inline;
+	padding-right: 60px;
+	padding-left: 60px;
+}
+
+/*Navigation panel list hyperlinks*/
+div ul li a{
+	text-decoration: none;
+}
+
+/*navigation panel list hyperlinks on hover*/
+div ul li a:hover{
+	color: black;
+	text-decoration: underline;
+}
+
+/*hero section*/
+.hero{
+	background-image: url(../images/hero1.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	margin-top: 40px;
+	background-size: 100%;
+	height: 500px;
+}
+
+/*Overwriting container_12 from 960_12_col*/
+.container_12{
+	position: relative;
+	background-color: grey;
+}
+
+/*Three column 960 grid section*/
+.three_col{
+	margin-top: 190px;
+}
+
+/*First of the three 960 grid columns*/
+.col_one{
+	margin-top: 70px;
+	z-index: -100;
+}
+
+/*To format image boxes of three column 960 grid section*/
+div div a img{
+	box-shadow: 10px 10px 15px #25383C;
+	padding-left: 10px;
+}
+
+/*Second of the three 960 grid columns*/
+.col_two{
+	z-index: -100;
+	margin-top: 70px;
+}
+
+/*Third of the three 960 grid columns*/
+.col_three{
+	z-index: -100;
+	margin-top: 70px;
+}
+
+/*For text in the Three column 960 grid section*/
+.categories{
+	color: white;
+	font-family: Lemonada;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 10px;
+	text-shadow: 0px 1px 10px;
+}
+
+/*For mouse hover in the Three column 960 grid section*/
+.categories:hover{
+	color: black;
+	text-decoration: underline;
+}
+
+/*For first category Three column 960 grid section*/
+.goliath{
+	padding-left: 5px; 
+}
+
+/*For second category Three column 960 grid section*/
+.dan{
+	padding-left: 5px;
+}
+
+/*For third category Three column 960 grid section*/
+.sachin{
+	padding-left: 5px; 
+}
+
+/*For links to the categories Three column 960 grid section*/
+div div a{
+	text-decoration: none;
+	padding-top: 0;
+}
+
+/*For two columns 960 grid section*/
+.two_col{
+	margin-top: 20px;
+	background-color: grey;
+}
+
+/*To format image box in the left column of two column 960 grid section*/
+div div img{
+	box-shadow: 10px 10px 15px #25383C;
+}
+
+/*First of the two 960 grid columns*/
+.col_first{
+	margin-top: 40px;
+}
+
+/*First of the two 960 grid columns*/
+.col_second{
+	margin-top: 40px;
+}
+
+/*To divide the right side of two column 960 grid section in three rows*/
+.rows{
+	    width:520px;
+}
+
+/*For formatting the rows in the right side of the two column 960 grid section*/
+.blocks{
+	border: none;
+	height: 144px;
+}
+
+/*To format the quotes in the rows of the two column 960 grid section*/
+blockquote {
+	margin-left: 0px;
+	text-align: center;
+	font-family: Lemonada;
+	font-size: 20px;
+	margin-right: 0;
+	vertical-align: middle;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-shadow: 1px 1px 2px;
+}
+
+/*Footer*/
+.footer {
+   position:relative;
+   left:0px;
+   bottom:0px;
+   height:50px;
+   text-align: center;
+   width:100%;
+   
+   background:#999;
+   
+}
+
+/*Formatting footer*/
+footer p{
+	
+	font-family: Lemonada;
+   	font-size: 20px;
+   	padding-bottom: 0;
+}
+
+/*For footer links*/
+footer a{
+	margin-top: 10px;
+	text-decoration: none;
+}
+
+
