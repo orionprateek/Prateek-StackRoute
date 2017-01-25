@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Assault Cases</title>
+<style>
+
+	body {
+		font: 10px sans-serif;
+		text-decoration: underline;
+	}
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	.line {
+		fill: none;
+		stroke-width: 2px;
+	}
+
+	.axis text {
+		font-family: 'Arial', cursive;
+		font-size: 12px;
+	}
+	.axis .label {
+		font-size: 22px;
+		font-weight: bold;
+	}
+	.cases
+	{
+		font-size: 13px;
+		font-weight: bolder;
+	}
+	s
+	
+
+</style>
+<body>
+	<a href="/">
+		Back to Home.
+	</a>
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script>
+
+		var outerWidth = 1500;
+		var outerHeight = 750;
+
+		var margin = { left: 200, top: 50, right: 100, bottom: 60 };
+		var innerWidth = outerWidth - margin.left - margin.right;
+		var innerHeight = outerHeight - margin.top - margin.bottom;
+
+		var xScale = d3.scale.linear().range([0, innerWidth]);
+
+		var yScale = d3.scale.linear().range([innerHeight, 0]);
+
+		var color = d3.scale.category10();
+
+		var xAxisLabelText = "Year";
+		var xAxisLabelOffset = 60;
+
+		var yAxisLabelText = "Cases of Assault";
+		var yAxisLabelOffset = 100;
+
+		var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(16);
+		var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+		
+		var line = d3.svg.line()
+		.x(function(d) { return xScale(d.Year); })
+		.y(function(d) { return yScale(d.assault); })
+		.interpolate("basis");
+
+
+		var svg = d3.select("body").append("svg")
+		.attr("width", outerWidth)
+		.attr("height", outerHeight)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.json("Answer2.json", function(data) 
+		{
+
+			color.domain(d3.keys(data[0]).filter(function(key) 
+				{ return key !== "Year"; }));
+
+
+			var assault_arrest = color.domain().map(function(name) 
+			{
+				return {
+					name: name,
+					values: data.map(function(d) {
+						return {Year: d.Year, assault: +d[name]};
+					})
+				};
+			});
+
+			xScale.domain(d3.extent(data, function(d) { return d.Year; }));
+
+			yScale.domain([0,d3.max(assault_arrest, function(c) { return d3.max(c.values, function(v) { return v.assault; }); })
+				]);
+
+			var xAxisLabelText = "YEAR";
+			var xAxisLabelOffset = 60;
+
+			var yAxisLabelText = "CASES OF ASSAULT";
+			var yAxisLabelOffset = 100;
+
+
+			svg.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + innerHeight + ")")
+			.call(xAxis)
+			.append("text")
+			.style("text-anchor", "middle")
+			.attr("transform", "translate(" + (innerWidth / 2) + "," + xAxisLabelOffset + ")")
+			.attr("class", "label")
+			.text(xAxisLabelText);
+
+
+			svg.append("g")
+			.attr("class", "y axis")
+			.call(yAxis)
+			.append("text")
+			.style("text-anchor", "middle")
+			.attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+			.attr("class", "label")
+			.text(yAxisLabelText);
+
+
+
+			var cases = svg.selectAll(".cases")
+			.data(assault_arrest)
+			.enter().append("g")
+			.attr("class", "cases");
+
+			cases.append("path")
+			.attr("class", "line")
+			.attr("d", function(d) { return line(d.values); })
+			.style("stroke", function(d) { return color(d.name); });
+
+			cases.append("text")
+			.datum(function(d) { return {name: d.name, value: d.values[d.values.length - 15]}; })
+			.attr("transform", function(d) { return "translate(" + xScale(d.value.Year) + "," + yScale(d.value.assault) + ")"; })
+			.attr("x", 3)
+			.attr("dy", ".35em")
+			.attr("class", "cases")
+			.text(function(d) { return d.name; });
+
+		});
+
+	</script>
+</body>
