@@ -1,0 +1,45 @@
+
+
+
+table{
+	float: left;
+	margin-left: 50px;
+}
+
+#printDetail{
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#results{
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.searchBar{
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.lists{
+	list-style: none;
+	text-align: left;
+}
+
+.imdbId{
+	display: none;
+	visibility: hidden;
+}
+
+#expandDetails{
+	margin-left: 40px;
+	float: left;
+}
+
+#printData{
+	margin-left: 150px;
+	margin-top: 150px;
+}
+
+
+
